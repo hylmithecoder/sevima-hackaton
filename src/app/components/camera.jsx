@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import jsQR from "jsqr";
 
-const Scanner = () => {
+const Scanner = ( { currentQrId, name} ) => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [error, setError] = useState(null);
@@ -12,9 +12,6 @@ const Scanner = () => {
   const [qrText, setQrText] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [location, setLocation] = useState(null);
-  
-  // Mock current user - ganti dengan implementasi auth yang sebenarnya
-  const [currentUser] = useState({ id: '3', name: 'hylmi_mahdi' });
 
   const getLocation = () => {
     return new Promise((resolve, reject) => {
@@ -61,7 +58,6 @@ const Scanner = () => {
 
   const handleSend = async () => {
     if (!qrText) {
-      alert("Tidak ada QR Code terdeteksi!");
       return;
     }
 
@@ -69,15 +65,14 @@ const Scanner = () => {
       // Ambil lokasi
       const locationData = await getLocation();
 
-      // Buat FormData untuk kirim sebagai form-data (sesuai API PHP)
       const formData = new FormData();
-      formData.append('qr_code_content', qrText); // Ubah ke content, bukan ID
-      formData.append('user_id', currentUser?.id || '');
+      formData.append('qr_code_id', qrText);
+      formData.append('user_id', currentQrId || '');
       formData.append('status', 'on_time');
       formData.append('scan_time', new Date().toISOString());
       formData.append('latitude', locationData.latitude.toString());
       formData.append('longitude', locationData.longitude.toString());
-      formData.append('photo_url', '/uploads/default.png'); // atau path foto jika ada
+      formData.append('photo_url', '/uploads/default.png');
 
       console.log("Sending form data:");
       for (let pair of formData.entries()) {
@@ -86,10 +81,9 @@ const Scanner = () => {
 
       const response = await fetch("https://ilmeee.com/api_sevima/absen/index.php", {
         method: "POST",
-        body: formData // Tidak perlu Content-Type header untuk FormData
+        body: formData
       });
 
-      // Debug: cek response text dulu sebelum parse JSON
       const responseText = await response.text();
       console.log("Raw response:", responseText);
       console.log("Response status:", response.status);
@@ -109,11 +103,9 @@ const Scanner = () => {
         throw new Error(responseData.message || 'Gagal menyimpan absensi');
       }
 
-      alert(`Absensi berhasil!\nQR Code: ${qrText}\nLokasi: ${locationData.latitude}, ${locationData.longitude}`);
-
     } catch (error) {
       console.error('Error:', error);
-      alert(`Error: ${error.message}`);
+      // alert(`Error: ${error.message}`);
     } finally {
       resetScanner();
     }

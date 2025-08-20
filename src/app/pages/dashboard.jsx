@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Sidebar from '../components/sidebar';
 import { Calendar, Clock, MapPin, User, Eye, Trash2, RefreshCw, Users, CheckCircle, AlertCircle } from 'lucide-react';
 
 const AttendanceDashboard = () => {

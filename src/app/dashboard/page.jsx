@@ -5,6 +5,7 @@ import UserManagementPanel from '../pages/users';
 import SideBar from "../components/sidebar";
 import AddQRCodePanel from '../pages/qrcode';
 import AttendanceDashboard from '../pages/dashboard';
+import ExportToPDF from '../pages/exporttopdf';
 // import ChatBot from '../components/chatbot';
 
 export default function DynamicHome() {
@@ -19,19 +20,16 @@ export default function DynamicHome() {
         case "user":
             Content = <UserManagementPanel/>
             break;
-        // case "ai":
-        //     Content = <ChatBot />;
-        //     break;
-
+        case "laporan":
+            Content = <ExportToPDF/>
+            break;
         default:
             Content = <AttendanceDashboard/>;
     }
 
     return (
         <div>
-            {/* <Navbar /> */}
             <SideBar />
-            {/* <ChatBot/> */}
             {Content}
         </div>
     );

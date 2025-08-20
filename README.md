@@ -1,5 +1,8 @@
 # Hackathon Sevima 
 
+teknologi yang saya gunakan adalah Next js sebagai frontend
+dan php native sebagai api
+
 pertama init 
 ```bash
 npm i
@@ -12,3 +15,6 @@ tpi saya share juga api saya di folder backend
 npm run dev
 
 ```
+
+oh iya pakai ngrok juga untuk bisa ngescan atau aktifkan kamera lewat hp, atau iphone
+tpi ngrok nya

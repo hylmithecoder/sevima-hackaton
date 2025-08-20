@@ -11,6 +11,7 @@ import {
   UserCircle,
   Menu,
   X,
+  Paperclip,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -22,10 +23,9 @@ export default function Sidebar() {
 
   const menus = [
     { name: "Dashboard", href: "/dashboard", icon: Home },
-    { name: "Absensi", href: "/dashboard?modul=qr_code", icon: Users },
+    { name: "Tambah QR", href: "/dashboard?modul=qr_code", icon: Users },
     { name: "Pengguna", href: "/dashboard?modul=user", icon: UserCircle },
-    { name: "Kalender", href: "/calendar", icon: Calendar },
-    { name: "Laporan", href: "/report", icon: BarChart2 },
+    { name: "Laporan", href: "/dashboard?modul=laporan", icon: BarChart2 },
     { name: "Pengaturan", href: "/settings", icon: Settings },
   ];
 
@@ -75,10 +75,9 @@ export default function Sidebar() {
                 key={menu.name}
                 href={menu.href}
                 className={cn(
-                  "flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors",
-                  active && "bg-blue-100 text-blue-700 font-medium"
+                  "flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
                 )}
-                onClick={() => setOpen(false)} // auto close kalau di mobile
+                onClick={() => setOpen(false)}
               >
                 <menu.icon className="w-5 h-5 mr-3" />
                 {menu.name}
