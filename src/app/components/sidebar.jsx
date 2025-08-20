@@ -25,8 +25,7 @@ export default function Sidebar() {
     { name: "Dashboard", href: "/dashboard", icon: Home },
     { name: "Tambah QR", href: "/dashboard?modul=qr_code", icon: Users },
     { name: "Pengguna", href: "/dashboard?modul=user", icon: UserCircle },
-    { name: "Laporan", href: "/dashboard?modul=laporan", icon: BarChart2 },
-    { name: "Pengaturan", href: "/settings", icon: Settings },
+    { name: "Laporan", href: "/dashboard?modul=laporan", icon: BarChart2 }
   ];
 
   return (
@@ -42,7 +41,7 @@ export default function Sidebar() {
       {/* Overlay background (mobile) */}
       {open && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-40 z-40 md:hidden"
+          className="fixed inset-0 blur-sm bg-opacity-40 z-40 md:hidden"
           onClick={() => setOpen(false)}
         />
       )}

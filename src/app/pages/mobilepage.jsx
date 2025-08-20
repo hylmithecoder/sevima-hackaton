@@ -21,7 +21,7 @@ const MobilePage = () => {
 
   // ambil user dari localStorage
   useEffect(() => {
-      if (typeof window !== 'undefined') {
+      // if (typeof window !== 'undefined') {
         const savedUser = localStorage.getItem("user");
         // console.log(savedUser);
      setGetLocalstorage(JSON.parse(savedUser));
@@ -30,7 +30,7 @@ const MobilePage = () => {
       } else {
         router.push("/"); // kalau ga ada data user, balik ke login
       }
-    }
+    // }
   }, [router]);
 
   if (!user) {

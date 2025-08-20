@@ -17,4 +17,7 @@ npm run dev
 ```
 
 oh iya pakai ngrok juga untuk bisa ngescan atau aktifkan kamera lewat hp, atau iphone
-tpi ngrok nya
+
+```bash
+ngrok http 3000
+```

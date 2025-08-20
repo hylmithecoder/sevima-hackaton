@@ -6,6 +6,7 @@ import SideBar from "../components/sidebar";
 import AddQRCodePanel from '../pages/qrcode';
 import AttendanceDashboard from '../pages/dashboard';
 import ExportToPDF from '../pages/exporttopdf';
+import { AdminOnly } from '../components/middleware';
 // import ChatBot from '../components/chatbot';
 
 export default function DynamicHome() {
@@ -29,8 +30,10 @@ export default function DynamicHome() {
 
     return (
         <div>
+            <AdminOnly>
             <SideBar />
             {Content}
+            </AdminOnly>
         </div>
     );
 }

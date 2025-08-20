@@ -1,5 +1,12 @@
+import AuthProvider from "../components/middleware";
 import MobilePage from "../pages/mobilepage";
 
 export default function Mobile() {
-    return <MobilePage />;
+    return (
+    <div>
+        <AuthProvider>
+        <MobilePage />
+        </AuthProvider>
+    </div>
+    )
 }
